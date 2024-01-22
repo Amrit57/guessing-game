@@ -49,7 +49,17 @@ export default ({
       console.log(this.selectedCity)
 
     },
-    
+    checkAnswer() {
+      if (this.selectedCity && this.selectedCountry) {
+
+        const selectCityIndex = this.globalData.findIndex(item => item.capital === this.selectedCity);
+        const selectCountryIndex = this.globalData.findIndex(item => item.country === this.selectedCountry)
+
+        console.log(selectCountryIndex)
+        console.log(selectCityIndex)
+
+      }
+    }
   }
 })
 </script>
