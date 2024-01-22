@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <h1 class="m-2">Guess the country and It's capital city</h1>
-    <h3>{{ result }}</h3>
-    <p class="mx-auto">{{ selectedMessage }}</p>
-    <h3 class="error">{{ error }}</h3>
+    <h1 class="mb-4 text-center">Guess the country and It's capital city</h1>
+    <h3 class="text-center mt-4">{{ result }}</h3>
+    <p class="mx-auto text-center">{{ selectedMessage1 }}</p>
+    <p class="mx-auto text-center">{{ selectedMessage2 }}</p>
+    <h3 class="error text-center">{{ error }}</h3>
     <h2 class="m-4">Countries</h2>
     <div>
       <button @click="selectCountry(item)" v-for="(item, index) in globalData" :key="index" class="m-2 btn btn-primary">{{
@@ -40,7 +41,8 @@ export default ({
       ],
       selectedCountry: '',
       selectedCity: '',
-      selectedMessage: '',
+      selectedMessage1: '',
+      selectedMessage2: '',
       result:'',
       error:''
     }
@@ -48,16 +50,16 @@ export default ({
   methods: {
     selectCountry(item) {
       this.selectedCountry = item.country
-      console.log(this.selectedCountry)
-      this.selectedMessage = `Capital City of ${this.selectedCountry} is ,,,,`
+      this.selectedMessage1 = `Country =  ${this.selectedCountry}`
       this.result = ''
       this.error=''
 
     },
     selectCity(item) {
       this.selectedCity = item.capital
-      console.log(this.selectedCity)
-      this.selectedMessage = `Capital of ${this.selectedCountry} is ${this.selectedCity}`
+      this.error=''
+      this.result = ''
+      this.selectedMessage2 = `Capital City = ${this.selectedCity}`
 
 
     },
