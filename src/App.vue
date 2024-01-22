@@ -1,18 +1,31 @@
 <template>
-  <div>
-    <h1>Hello</h1>
+  <div class="container">
+    <h1>Guess the country and It's capital city</h1>
+    <h2>Countries</h2>
+    <div v-for="item in globalData">
+      <button>{{ item.country }}</button>
+    </div>
+    <h2>Capital Cities</h2>
+    <div v-for="item in globalData">
+      <button>{{ item.capital }}</button>
+    </div>
   </div>
 </template>
 
 <script>
-
-export default {
+export default ({
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      globalData: [
+        { country: 'Nepal', capital: 'Kathmandu' },
+        { country: 'Japan', capital: 'Tokyo' }
+      ],
+    }
   }
-}
+})
 </script>
+
 
 <style>
 #app {
