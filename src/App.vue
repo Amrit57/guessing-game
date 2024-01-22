@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <h1 class="m-2">Guess the country and It's capital city</h1>
+    <h3>{{ result }}</h3>
+    <p class="mx-auto">{{ selectedMessage }}</p>
+    <h3 class="error">{{ error }}</h3>
     <h2 class="m-4">Countries</h2>
     <div>
       <button @click="selectCountry(item)" v-for="(item, index) in globalData" :key="index" class="m-2 btn btn-primary">{{
@@ -37,16 +40,25 @@ export default ({
       ],
       selectedCountry: '',
       selectedCity: '',
+      selectedMessage: '',
+      result:'',
+      error:''
     }
   },
   methods: {
     selectCountry(item) {
       this.selectedCountry = item.country
       console.log(this.selectedCountry)
+      this.selectedMessage = `Capital City of ${this.selectedCountry} is ,,,,`
+      this.result = ''
+      this.error=''
+
     },
     selectCity(item) {
       this.selectedCity = item.capital
       console.log(this.selectedCity)
+      this.selectedMessage = `Capital of ${this.selectedCountry} is ${this.selectedCity}`
+
 
     },
     checkAnswer() {
@@ -58,6 +70,16 @@ export default ({
         console.log(selectCountryIndex)
         console.log(selectCityIndex)
 
+        if (selectCountryIndex !== -1 && selectCityIndex !== -1 && selectCountryIndex === selectCityIndex) {
+          this.result= `Correct Answer!!!`
+        } else {
+          this.result= `Incorrect, Please try again!!!`
+        }
+
+        this.selectedCity = null,
+          this.selectedCountry - null
+      } else {
+          this.error = ('Please select country and city')
       }
     }
   }
@@ -73,5 +95,8 @@ export default ({
 
   color: #2c3e50;
 
+}
+.error{
+  color: red;
 }
 </style>
