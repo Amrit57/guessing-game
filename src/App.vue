@@ -69,8 +69,6 @@ export default ({
         const selectCityIndex = this.globalData.findIndex(item => item.capital === this.selectedCity);
         const selectCountryIndex = this.globalData.findIndex(item => item.country === this.selectedCountry)
 
-        console.log(selectCountryIndex)
-        console.log(selectCityIndex)
 
         if (selectCountryIndex !== -1 && selectCityIndex !== -1 && selectCountryIndex === selectCityIndex) {
           this.result= `Correct Answer!!!`
@@ -81,7 +79,7 @@ export default ({
         this.selectedCity = null,
           this.selectedCountry - null
       } else {
-          this.error = ('Please select country and city')
+          this.error = ('Please select new country and city')
       }
     }
   }
